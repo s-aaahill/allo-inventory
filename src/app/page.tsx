@@ -52,7 +52,7 @@ export default function Dashboard() {
 
       if (res.ok) {
         setStatusMsg({ text: "Success! Item reserved for 15 mins.", type: "success" });
-        fetchProducts(); // Refresh the stock numbers instantly
+        fetchProducts();
       } else {
         setStatusMsg({ text: `Failed: ${data.error}`, type: "error" });
       }
@@ -60,7 +60,6 @@ export default function Dashboard() {
       setStatusMsg({ text: "Network error occurred.", type: "error" });
     }
 
-    // Clear message after 3 seconds
     setTimeout(() => setStatusMsg({ text: "", type: "" }), 3000);
   };
 
@@ -94,8 +93,6 @@ export default function Dashboard() {
             Run Expired Cleanup
           </button>
         </header>
-
-        {/* Status Toast */}
         {statusMsg.text && (
           <div className={`mb-6 p-4 rounded-md font-medium text-white ${
             statusMsg.type === "error" ? "bg-red-500" : 
